@@ -1,0 +1,45 @@
+What is a Pointer in Golang?
+"A pointer is a variable that stores the memory address of another variable. 
+It is used to access and modify the original value without directly copying the data.
+It can also help avoid unnecessary copying of large data."
+package main
+
+import "fmt"
+
+func main() {
+    a := 10
+
+    var p *int = &a
+
+    fmt.Println(a)  // 10
+    fmt.Println(p)  // Memory address
+
+    *p = 20
+
+    fmt.Println(a)  // 20
+}
+Understand these three symbols
+- &a → Gets the memory address of variable a.
+- p → Stores the memory address.
+- *p → Accesses the value at that memory address (dereferencing).
+
+2. What is a Nil Pointer?
+Nil pointer means a pointer that does not point to any valid memory location. Its value is nil.
+
+Example:
+package main
+
+import "fmt"
+
+func main() {
+    var p *int
+
+    fmt.Println(p) // <nil>
+
+    if p == nil {
+        fmt.Println("Pointer is nil")
+    }
+}
+var p *int
+fmt.Println(*p) // Panic
+If we try to dereference a nil pointer, it causes a runtime panic."
