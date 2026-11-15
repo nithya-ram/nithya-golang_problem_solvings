@@ -1,0 +1,25 @@
+1. new() in Go
+- Allocates memory for a variable.
+- Initializes it with the zero value of its type.
+- Returns a pointer to that memory.
+Example:
+p := new(int)
+fmt.Println(*p) // 0
+
+*p = 10
+fmt.Println(*p) // 10
+
+
+2. make() in Go
+- Initializes slices, maps, and channels.
+- Returns the value itself, not a pointer.
+- It cannot be used with other types like int or struct.
+Example:
+s := make([]int, 3)
+m := make(map[string]int)
+ch := make(chan int)
+
+
+Interview-ready answer
+" In Go, new() allocates memory, initializes it with the zero value, and returns a pointer.
+Whereas make() is used to initialize slices, maps, and channels, and it returns the value itself, not a pointer.
