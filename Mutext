@@ -1,0 +1,35 @@
+"Mutex stands for Mutual Exclusion. It is used to protect shared data from concurrent access by multiple goroutines.
+It allows only one goroutine at a time to access the critical section. In Go, we use sync.Mutex with Lock() and Unlock() methods to prevent race conditions."
+
+What is the difference between Mutex and RWMutex?
+- Mutex – Allows only one goroutine at a time to hold the lock.
+- RWMutex – Allows multiple readers simultaneously, but only one writer at a time.
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+func main() {
+	var mu sync.Mutex
+	var wg sync.WaitGroup
+
+	counter := 0
+
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+
+		go func() {
+			defer wg.Done()
+
+			mu.Lock()
+			counter++
+			mu.Unlock()
+		}()
+	}
+
+	wg.Wait()
+
+	fmt.Println("Counter:", counter)
+}
