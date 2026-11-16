@@ -1,0 +1,27 @@
+select is used to handle multiple channel operations. It waits until one of the channel operations is ready and executes the corresponding case.
+If multiple cases are ready, it randomly selects one. We can also use a default case to avoid blocking.
+
+package main
+
+import "fmt"
+
+func main() {
+    ch1 := make(chan string)
+    ch2 := make(chan string)
+
+    go func() {
+        ch1 <- "Hello"
+    }()
+
+    go func() {
+        ch2 <- "Welcome"
+    }()
+
+    select {
+    case msg := <-ch1:
+        fmt.Println(msg)
+
+    case msg := <-ch2:
+        fmt.Println(msg)
+    }
+}
