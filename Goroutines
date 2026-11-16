@@ -1,0 +1,58 @@
+"A goroutine is a lightweight thread managed by the Go runtime.
+It is used to execute functions concurrently. We can create a goroutine using the go keyword."
+
+Example:
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func display() {
+    fmt.Println("Hello from goroutine")
+}
+
+func main() {
+    go display()
+    time.Sleep(time.Second)
+    fmt.Println("Main function")
+}
+
+
+2. How do goroutines communicate with each other?
+"In Go, goroutines communicate with each other using channels. There are two types of channels: buffered and unbuffered."
+Unbuffered channel
+- It has zero capacity.
+- The sender waits until a receiver is ready.
+- Both sender and receiver must be ready to communicate.
+Example:
+ch := make(chan int)
+
+go func() {
+    ch <- 10
+}()
+
+value := <-ch
+fmt.Println(value)
+
+
+Buffered channel
+- It has a fixed capacity.
+- The sender can send values without an immediate receiver, as long as the buffer has space.
+- When the buffer is full, the sender blocks until space becomes available.
+Example:
+ch := make(chan int, 2)
+
+ch <- 10
+ch <- 20
+
+fmt.Println(<-ch)
+fmt.Println(<-ch)
+
+
+
+Thread vs Goroutine:
+
+"Threads are managed by the operating system, whereas goroutines are managed by the Go runtime. Threads are comparatively heavyweight and consume more resources.
+Goroutines are lightweight and consume less memory. Multiple goroutines can run on a single OS thread, and the Go runtime schedules them efficiently
