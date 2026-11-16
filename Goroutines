@@ -50,7 +50,18 @@ ch <- 20
 fmt.Println(<-ch)
 fmt.Println(<-ch)
 
+Goroutine Leak:
+A goroutine leak happens when a goroutine gets blocked and cannot exit, so it continues to consume memory and other resources. 
+For example, if one goroutine sends a value to an unbuffered channel but no receiver is available, the sender waits forever. This can cause a goroutine leak
+package main
 
+func main() {
+    ch := make(chan int)
+
+    go func() {
+        ch <- 10 // Blocks forever: no receiver
+    }()
+}
 
 Thread vs Goroutine:
 
