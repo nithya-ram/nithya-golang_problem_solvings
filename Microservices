@@ -1,0 +1,90 @@
+Microservices is an architectural style where a large application is divided into multiple small, independent services. 
+Each service handles a specific business functionality.
+
+If one service fails, other services can continue working independently, depending on their dependencies.
+
+Whereas in monolithic architecture, the entire application is developed and deployed as a single unit.
+So changes in one module may affect the entire application
+
+Communication:
+There are two types of communication in microservices: synchronous and asynchronous.
+
+Synchronous communication means one service sends a request to another service and waits for the response. We can use REST APIs and gRPC.
+
+Asynchronous communication means one service sends a message through a message broker, and 
+it doesn't wait for the other service to complete processing. We can use RabbitMQ and Kafka.
+
+What is API Gateway in Microservices?
+API Gateway is a single entry point between the client and multiple microservices. It receives client requests and routes them to the appropriate service.
+We use API Gateway for request routing, authentication, rate limiting, logging and load balancing. It simplifies communication between the client and microservices.
+
+2. RabbitMQ – Important interview questions
+Q1. What is RabbitMQ?
+Answer:
+
+"RabbitMQ is a message broker. It allows different services to communicate asynchronously by sending and receiving messages. It helps services communicate without directly depending on each other."
+
+Tamil: Oru service message send pannum. RabbitMQ antha message-ah store panni correct receiving service-ku deliver pannum.
+Q2. Why do we use RabbitMQ?
+Answer:
+
+"We use RabbitMQ for asynchronous communication, task queues, background jobs and decoupling microservices."
+
+Examples:
+- Sending emails.
+- Sending OTP.
+- Order processing.
+- Background tasks.
+Q3. What is Producer and Consumer?
+Answer:
+- Producer: Sends messages.
+- Consumer: Receives and processes messages.
+- Queue: Stores messages until they are consumed.
+Q4. What happens if the consumer fails?
+Answer:
+
+"If a consumer fails before acknowledging a message, RabbitMQ can requeue and deliver that message to another available consumer, depending on the queue configuration."
+Q5. What is Acknowledgement in RabbitMQ?
+Answer:
+
+"An acknowledgement is a confirmation sent by the consumer to RabbitMQ after successfully processing a message. It tells RabbitMQ that the message can be removed from the queue."
+Q6. What is Exchange in RabbitMQ?
+Answer:
+
+"An exchange receives messages from producers and routes them to queues based on routing rules."
+
+Four common exchange types:
+- Direct
+- Fanout
+- Topic
+- Headers
+
+3. Kafka – Important interview questions
+Q1. What is Apache Kafka?
+Answer:
+
+"Apache Kafka is a distributed event streaming platform.
+It is used to handle large volumes of real-time data and enables asynchronous communication between microservices."
+
+Tamil: Multiple services-ku large amount of messages real-time-la send and receive panna Kafka use pannuvom.
+Q2. What is Topic in Kafka?
+Answer:
+
+"A topic is a logical category where Kafka stores messages. Producers publish messages to topics, and consumers read messages from topics."
+Q3. What are Producer and Consumer in Kafka?
+Answer:
+- Producer: Sends messages to Kafka topics.
+- Consumer: Reads messages from Kafka topics.
+- Broker: Kafka server that stores and manages messages.
+Q4. What is Partition in Kafka?
+Answer:
+
+"A partition is a part of a Kafka topic. It helps distribute messages across multiple brokers and allows parallel processing."
+Q5. What is Consumer Group?
+Answer:
+
+"A consumer group is a group of consumers that work together to read messages from a topic. Partitions are distributed among consumers in that group."
+Q6. What is Offset in Kafka?
+Answer:
+
+"Offset is a unique sequential position of a message within a partition. Kafka uses offsets to track which messages a consumer has already processed."
